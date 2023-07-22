@@ -5,7 +5,7 @@ class ExitOnCritical(logging.Handler):
     def emit(self, record):
         
         if record.levelno in (logging.CRITICAL,):
-            exit()
+            exit(-1)
 
 def get_logger(level: str = 'INFO'):
 

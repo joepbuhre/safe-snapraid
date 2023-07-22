@@ -8,7 +8,7 @@ import argparse
 
 
 # Create an ArgumentParser object
-parser = argparse.ArgumentParser(description='Jellymover. Automatically archive seen episodes / movies')
+parser = argparse.ArgumentParser(description='Safe Snapraid. Safely test if everything what has been deleted also has been deleted')
 
 # Add arguments to the parser
 parser.add_argument('-d', '--diff', default=None, help='Check snapraid')
@@ -38,7 +38,7 @@ class SafeSnapraid:
 
         for fl in fls:
             # Check if exists in 
-            mtc = re.findall(f'copy\s({fl})', txt)
+            mtc = re.findall(fr'copy\s({fl})', txt)
             if mtc:
                 self.log.debug(f'\t{fl} exists in copy regex')
                 json_obj['safe'].append(fl)
@@ -63,12 +63,12 @@ class SafeSnapraid:
 
 snap = SafeSnapraid()
 
-"""Run tests"""
+# Run tests
 if args.test == True:
     snap.run_tests()
 
-"""Run Live"""
-if args.diff != None:
+# Run live
+elif args.diff != None:
     if args.only_exit == True:
         snap.log.setLevel(CRITICAL)
     snap.log.info('Running SafeSnapraid')
@@ -79,4 +79,5 @@ if args.diff != None:
     else:
         exit(0)
 
-# snap.run(txt)
+else:
+    parser.print_help()
