@@ -1,0 +1,61 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Run Tests",
+            "type": "python",
+            "request": "launch",
+            "program": "main.py",
+            "args": [
+                "--log-level", "DEBUG",
+                "--test"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: Run Live",
+            "type": "python",
+            "request": "launch",
+            "program": "main.py",
+            "args": [
+                "--log-level", "DEBUG",
+                "--diff",
+                "Loading state from /services/snapraid/snapraid.content...\nComparing...\ncopy test.log -> test.log\ncopy test2.log -> test2.log\ncopy tv/test3.log -> tv/test3.log\nremove test.log\nremove test2.log\nremove tv/test3.log\n\n2197 equal\n0 added\n3 removed\n0 updated\n0 moved\n3 copied\n0 restored\nThere are differences!"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: Run Only Exit",
+            "type": "python",
+            "request": "launch",
+            "program": "main.py",
+            "args": [
+                "--log-level", "DEBUG",
+                "--only-exit",
+                "--diff",
+                "Loading state from /services/snapraid/snapraid.content...\nComparing...\ncopy test.log -> test.log\ncopy test2.log -> test2.log\ncopy tv/test3.log -> tv/test3.log\nremove test.log\nremove test2.log\nremove tv/test3.log\nremove test234.log\n\n2197 equal\n0 added\n3 removed\n0 updated\n0 moved\n3 copied\n0 restored\nThere are differences!"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: Run Json",
+            "type": "python",
+            "request": "launch",
+            "program": "main.py",
+            "args": [
+                "--log-level", "DEBUG",
+                "--json",
+                "--diff",
+                "Loading state from /services/snapraid/snapraid.content...\nComparing...\ncopy test.log -> test.log\ncopy test2.log -> test2.log\ncopy tv/test3.log -> tv/test3.log\nremove test.log\nremove test2.log\nremove tv/test3.log\n\n2197 equal\n0 added\n3 removed\n0 updated\n0 moved\n3 copied\n0 restored\nThere are differences!"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
