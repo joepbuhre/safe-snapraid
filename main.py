@@ -15,7 +15,7 @@ parser.add_argument('-d', '--diff', default=None, help='Check snapraid')
 parser.add_argument('--json', action=argparse.BooleanOptionalAction, default=False, help='Return JSON')
 parser.add_argument('--test', action=argparse.BooleanOptionalAction, default=False, help='Return Test scripts in test directory')
 parser.add_argument('-e', '--only-exit', action=argparse.BooleanOptionalAction, default=False, help='Return Test scripts in test directory')
-
+parser.add_argument('-l', '--log-level', default='INFO', help='Specify Log Level')
 
 args = parser.parse_args()
 
@@ -23,8 +23,8 @@ args = parser.parse_args()
 
 class SafeSnapraid:
 
-    def __init__(self) -> None:
-        self.log = get_logger('DEBUG')
+    def __init__(self, log_level: str = 'INFO') -> None:
+        self.log = get_logger(log_level)
 
     def run(self, txt):
         """Run for live"""
@@ -61,7 +61,7 @@ class SafeSnapraid:
             with open(f) as f:
                 self.run(f.read())
 
-snap = SafeSnapraid()
+snap = SafeSnapraid(args.log_level)
 
 # Run tests
 if args.test == True:
