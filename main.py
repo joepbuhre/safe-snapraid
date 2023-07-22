@@ -12,7 +12,7 @@ parser = argparse.ArgumentParser(description='Safe Snapraid. Safely test if ever
 
 # Add arguments to the parser
 parser.add_argument('-d', '--diff', default=None, help='Check snapraid')
-parser.add_argument('--json', default=None, help='Return JSON')
+parser.add_argument('--json', action=argparse.BooleanOptionalAction, default=False, help='Return JSON')
 parser.add_argument('--test', action=argparse.BooleanOptionalAction, default=False, help='Return Test scripts in test directory')
 parser.add_argument('-e', '--only-exit', action=argparse.BooleanOptionalAction, default=False, help='Return Test scripts in test directory')
 
@@ -67,6 +67,12 @@ snap = SafeSnapraid()
 if args.test == True:
     snap.run_tests()
 
+elif args.json != False:
+    # Because json we supress all errors
+    snap.log.setLevel(CRITICAL)
+    result = snap.run(args.diff)
+    print(json.dumps(result, indent=4))
+
 # Run live
 elif args.diff != None:
     if args.only_exit == True:
@@ -78,6 +84,5 @@ elif args.diff != None:
         exit(-1)
     else:
         exit(0)
-
 else:
     parser.print_help()

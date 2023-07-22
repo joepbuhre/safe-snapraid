@@ -39,6 +39,19 @@
             ],
             "console": "integratedTerminal",
             "justMyCode": true
+        },
+        {
+            "name": "Python: Run Json",
+            "type": "python",
+            "request": "launch",
+            "program": "main.py",
+            "args": [
+                "--json",
+                "--diff",
+                "Loading state from /services/snapraid/snapraid.content...\nComparing...\ncopy test.log -> test.log\ncopy test2.log -> test2.log\ncopy tv/test3.log -> tv/test3.log\nremove test.log\nremove test2.log\nremove tv/test3.log\n\n2197 equal\n0 added\n3 removed\n0 updated\n0 moved\n3 copied\n0 restored\nThere are differences!"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
         }
     ]
 }
